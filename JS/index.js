@@ -16,16 +16,9 @@ const symCase = document.getElementById("sym")
 const regenBtn = document.getElementById("regen")
 const passLengthinput = document.getElementById("passlen")
 const passRange = document.getElementById("passlenrgn")
+const passStrengthText = document.getElementById("passstrength")
+const passStrenghClr = document.getElementById("strengthclr")
 
-passLengthinput.oninput = function () {
-    passRange.value = passLengthinput.value;
-    generatePassword(arr, passLengthinput.value);
-}
-
-passRange.oninput = function () {
-    passLengthinput.value = passRange.value;
-    generatePassword(arr, passLengthinput.value);
-}
 
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -42,11 +35,13 @@ function generatePassword(arr, length) {
         password += str.charAt(Math.floor(Math.random() * str.length));
     }
     displayPass.value = password;
+    checkPasswordStrength(password);
 }
 
 function addToArray(characters) {
     arr.push(characters);
     generatePassword(arr, passLengthinput.value);
+    
 }
 
 function onCheckEvent(checker, characters) {
@@ -56,6 +51,51 @@ function onCheckEvent(checker, characters) {
         arr.splice(arr.indexOf(characters), 1);
         generatePassword(arr, passLengthinput.value);
     }
+}
+
+function checkPasswordStrength(password) {
+    const lengthWeight = 2;
+    const complexityWeight = 2;
+
+    const lengthScore = Math.min(password.length / 12, 1);
+
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password);
+    
+    const complexityScore = (hasUppercase + hasLowercase + hasNumber + hasSpecialChar) / 4;
+
+    const overallStrength = (lengthScore * lengthWeight + complexityScore * complexityWeight) / (lengthWeight + complexityWeight);
+
+
+    if (overallStrength >= 0.8) {
+        passStrengthText.textContent = "Strong";
+        passStrenghClr.classList.remove("bg-red-500")
+        passStrenghClr.classList.remove("bg-yellow-500")
+        passStrenghClr.classList.add("bg-green-500")
+    } else if (overallStrength >= 0.5) {
+        passStrengthText.textContent = "Medium";
+        passStrenghClr.classList.remove("bg-green-500")
+        passStrenghClr.classList.remove("bg-red-500")
+        passStrenghClr.classList.add("bg-yellow-500")
+    } else {
+        passStrengthText.textContent = "Weak";
+        passStrenghClr.classList.remove("bg-green-500")
+        passStrenghClr.classList.remove("bg-yellow-500")
+        passStrenghClr.classList.add("bg-red-500")
+    }
+}
+
+
+passLengthinput.oninput = function () {
+    passRange.value = passLengthinput.value;
+    generatePassword(arr, passLengthinput.value);
+}
+
+passRange.oninput = function () {
+    passLengthinput.value = passRange.value;
+    generatePassword(arr, passLengthinput.value);
 }
 
 regenBtn.addEventListener("click", function () {
