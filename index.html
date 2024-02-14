@@ -54,24 +54,24 @@
               <h3 class="text-lg font-semibold mb-2 text">Password History >></h3>
               <div class="flex flex-col gap-2 relative">
                 <label for="rpassword"></label>
-                <input type="text" name="rpassword" id="rpassword" disabled
+                <input type="text" name="rpassword" id="passhis1" disabled
                   class="border-2 border-gray-500 pr-9 pl-2 py-2 md:w-64 w-96 cursor-text text inputbg outline-none" />
-                <span id="cpybtn" class="material-symbols-outlined absolute md:left-56 left-22rem top-4 cursor-pointer text">
+                <span id="cpybtnpass1" class="material-symbols-outlined absolute md:left-56 left-22rem top-4 cursor-pointer text">
                   content_copy </span>
 
                 <label for="rpassword"></label>
-                <input type="text" name="rpassword" id="rpassword" disabled
+                <input type="text" name="rpassword" id="passhis2" disabled
                   class="border-2 border-gray-500 pr-9 pl-2 py-2 md:w-64 w-96 cursor-text text inputbg outline-none" />
-                <span id="cpybtn" class="material-symbols-outlined absolute md:left-56 left-22rem top-4.6rem cursor-pointer text">
+                <span id="cpybtnpass2" class="material-symbols-outlined absolute md:left-56 left-22rem top-4.6rem cursor-pointer text">
                   content_copy </span>
 
                 <label for="rpassword"></label>
-                <input type="text" name="rpassword" id="rpassword" disabled
+                <input type="text" name="rpassword" id="passhis3" disabled
                   class="border-2 border-gray-500 pr-9 pl-2 py-2 md:w-64 w-96 cursor-text text inputbg outline-none" />
-                <span id="cpybtn" class="material-symbols-outlined absolute md:left-56 left-22rem top-8.25rem cursor-pointer text">
+                <span id="cpybtnpass3" class="material-symbols-outlined absolute md:left-56 left-22rem top-8.25rem cursor-pointer text">
                   content_copy </span>
 
-                <button class=" text-red-500 mt-6 hover:font-bold">Clear History << </button>
+                <button class=" text-red-500 mt-6 hover:font-bold" id="clrhistory">Clear History << </button>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@
               <div class="m-1 md:flex-row flex justify-center">
                 <label for="passlen" class="text-lg py-2 text">Password Length: </label>
                 <input type="number" name="passlen" id="passlen" min="8" max="40" value="12"
-                  class=" py-2 text-lg accent-custom-black box w-16 outline-none inputbg text-center text " />
+                  class=" py-2 text-lg accent-custom-black box w-16 outline-none inputbg text-center text" />
               </div>
               <div class="flex md:justify-start justify-center">
                 <input type="range" id="passlenrgn" name="passlen" min="8" max="40" value="12"
@@ -130,12 +130,12 @@
           </div>
         </div>
         <div>
-          <p class="text-gray-800 font-bold text-lg mb-6 mx-6 text">It would take a computer 0 years to crack this password.
+          <p class="text-gray-800 font-bold text-lg mb-6 mx-6 text" id="passcracktime">
           </p>
         </div>
       </div>
 
-      <footer class="text-center pt-2 text">Made with ❤️ by <a class="text" href="http://">Sanjay Choudhary</a></footer>
+      <footer class="text-center pt-2 text">Made with ❤️ by <a class="text" href="http://linkedin.com/in/sanjay-choudhary-840833204">Sanjay Choudhary</a></footer>
     </div>
 
   </div>
